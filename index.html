@@ -34,13 +34,14 @@
         nav {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             background-color: #222222;
             padding: 15px 0;
         }
 
         nav a {
             color: #a5d6a7;
-            margin: 0 15px;
+            margin: 10px;
             font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -54,13 +55,15 @@
 
         /* Container Styles */
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: 40px auto;
         }
 
         /* About Section */
         .about {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 40px;
@@ -71,15 +74,17 @@
             width: 200px;
             height: 200px;
             object-fit: cover;
+            margin-bottom: 20px;
         }
 
         .about-text {
-            width: 60%;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
         }
 
         .about h2 {
             font-size: 28px;
-            text-align: left;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
@@ -87,14 +92,13 @@
         .about p {
             font-size: 18px;
             line-height: 1.6;
-            text-align: left;
         }
 
         /* Books Section */
         .books h2, .upcoming h2, .buy h2 {
             font-size: 28px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
 
@@ -108,14 +112,11 @@
             background-color: #333333;
             padding: 20px;
             margin: 10px;
-            width: 250px;
+            width: 100%;
+            max-width: 250px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .book-item:hover, .upcoming-item:hover, .buy-item:hover {
-            transform: scale(1.05);
+            text-align: center;
         }
 
         .book-item h3, .upcoming-item h3, .buy-item h3 {
@@ -171,7 +172,6 @@
             color: #80cbc4;
             text-decoration: none;
         }
-
     </style>
 </head>
 <body>
@@ -226,8 +226,8 @@ Join me on this exciting adventure as I continue to create and share stories tha
             <h2>Upcoming Books</h2>
             <div class="upcoming-list">
                 <div class="upcoming-item">
-                    <h3>Battle of Ther Starlight:Whisker's Quest</h3>
-                    <p>Comin Soon :)</p>
+                    <h3>Battle of Starlight: Whisker's Quest</h3>
+                    <p>Coming Soon :)</p>
                 </div>
                 <div class="upcoming-item">
                     <h3>The Eternity Code</h3>
@@ -261,4 +261,7 @@ Join me on this exciting adventure as I continue to create and share stories tha
     </div>
 
     <footer>
-        <p>&copy; 2024 Kartik Chandra.
+        <p>&copy; 2024 Kartik Chandra. All rights reserved.</p>
+    </footer>
+</body>
+</html>
