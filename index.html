@@ -1,311 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartik Chandra - Author</title>
-    <!-- Favicon -->
-    <link rel="icon" href="file.png" type="image/png">
-    <link rel="icon" href="file.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="file.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="file.png" sizes="48x48" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #121212; /* Dark background */
-            color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            word-wrap: break-word;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kartik Chandra - Author</title>
 
-        /* Header */
-        header {
-            background-color: #222222;
-            color: #a5d6a7;
-            text-align: center;
-            padding: 20px 0;
-        }
+  <!-- Favicon (replace "file.png" if needed) -->
+  <link rel="icon" href="file.png" type="image/png" />
 
-        header h1 {
-            font-size: 36px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+  <!-- Google Font: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-        /* Navigation Styles */
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            background-color: #222222;
-            padding: 15px 0;
-        }
+  <style>
+    /* -------------------------- GLOBAL STYLES --------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        nav a {
-            color: #a5d6a7;
-            margin: 10px;
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212; /* Dark background */
+      color: #f5f5f5;
+      word-wrap: break-word;
+      overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+      scroll-behavior: smooth;
+    }
 
-        nav a:hover {
-            color: #80cbc4;
-        }
+    a {
+      text-decoration: none;
+      color: #80cbc4;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #a5d6a7;
+    }
 
-        /* Container Styles */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
+    h1, h2, h3 {
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        /* Section Headings */
-        section h2 {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;    /* slightly larger text */
+      line-height: 1.8;     /* more line spacing */
+    }
 
-        /* About Section */
-        .about {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center; /* Centering the content */
-            margin-bottom: 40px;
-        }
+    /* Increase spacing for sections */
+    section {
+      padding: 4rem 0; /* More vertical space */
+    }
 
-        .about img {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 20px;
-            display: block;  /* Makes sure the image behaves like a block element */
-            margin-left: auto;
-            margin-right: auto; /* Centers the image horizontally */
-        }
+    /* ------------------------- HEADER SECTION --------------------------- */
+    header {
+      background-color: #222222;
+      padding: 3rem 1rem; /* bigger top/bottom padding */
+      text-align: center;
+      position: relative;
+      z-index: 1000;
+      animation: fadeDown 1s ease;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #a5d6a7;
+      letter-spacing: 3px;
+    }
 
-        .about-text {
-            flex: 1;
-            padding: 20px;
-            text-align: center;
-        }
+    @keyframes fadeDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .about h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+    /* ---------------------- NAV TOGGLER (HAMBURGER) --------------------- */
+    #nav-toggle {
+      display: none; /* hidden checkbox for mobile nav toggle */
+    }
+    .nav-toggle-label {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      width: 2rem;
+      height: 2rem;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .nav-toggle-label span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #a5d6a7;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
 
-        .about p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    /* ------------------------ NAVIGATION ------------------------------ */
+    nav {
+      background-color: #222222;
+    }
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem 0;
+      transition: all 0.5s ease;
+    }
+    .nav-links a {
+      color: #a5d6a7;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-links a::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #80cbc4;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
 
-        /* Books Section */
-        .books h2, .upcoming h2, .buy h2 {
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+    /* ------------------ MOBILE NAV (Show/Hide) ------------------------ */
+    @media (max-width: 768px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+      .nav-links {
+        position: absolute;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        background-color: #222222;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        padding: 0;
+        gap: 0;
+      }
+      .nav-links a {
+        margin: 1rem 0;
+        font-size: 1.2rem;
+      }
+      /* When checkbox is checked, show the nav */
+      #nav-toggle:checked ~ nav .nav-links {
+        height: 100vh;
+        padding-top: 6rem;
+      }
+      /* Animate the hamburger into an X */
+      #nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+      #nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+      }
+      #nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
 
-        .book-list, .upcoming-list, .buy-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    /* ------------------------- CONTAINER ------------------------------ */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
 
-        .book-item, .upcoming-item, .buy-item {
-            background-color: #333333;
-            padding: 20px;
-            margin: 10px;
-            width: 100%;
-            max-width: 250px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+    /* ---------------------- SECTION FADE IN/OUT ---------------------- */
+    section.reveal {
+      /* Each section starts invisible and slightly below */
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      /* margin-bottom: 3rem; no longer needed with bigger top/bottom pad */
+    }
+    section.reveal.active {
+      /* When active, fade in and move up */
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .book-item:hover, .upcoming-item:hover, .buy-item:hover {
-            transform: scale(1.1);
-        }
+    /* ---- STAGGERED CHILD ANIMATION (WITHIN SECTIONS) --------------- */
+    .fade-child {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    section.reveal.active .fade-child:nth-child(1) {
+      transition-delay: 0.1s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section.reveal.active .fade-child:nth-child(2) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section.reveal.active .fade-child:nth-child(3) {
+      transition-delay: 0.3s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section.reveal.active .fade-child:nth-child(4) {
+      transition-delay: 0.4s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section.reveal.active .fade-child:nth-child(5) {
+      transition-delay: 0.5s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Add more if needed */
 
-        .book-item h3, .upcoming-item h3, .buy-item h3 {
-            font-size: 22px;
-            color: #80cbc4;
-        }
+    /* ----------------------- ABOUT SECTION --------------------------- */
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-text {
+      flex: 1 1 400px;
+      margin: 1rem;
+    }
+    .about-text h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #a5d6a7;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+    .about-img {
+      flex: 0 0 auto;
+      margin: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .about-img img {
+      border-radius: 50%;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
 
-        .book-item p, .upcoming-item p, .buy-item p {
-            font-size: 16px;
-            color: #ccc;
-        }
+    /* -------------------- BOOKS / UPCOMING / BUY --------------------- */
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #a5d6a7;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .book-list, .upcoming-list, .buy-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .book-item, .upcoming-item, .buy-item {
+      background-color: #333333;
+      padding: 1.5rem;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .book-item:hover, .upcoming-item:hover, .buy-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+    }
+    .book-item h3, .upcoming-item h3, .buy-item h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: #80cbc4;
+      font-weight: 500;
+    }
+    .book-item p, .upcoming-item p, .buy-item p {
+      font-size: 1rem;
+      color: #ccc;
+    }
 
-        /* Contact Section */
-        #contact {
-            background-color: #333333;
-            color: #f5f5f5;
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 40px;
-        }
+    /* ---------------------- CONTACT SECTION -------------------------- */
+    #contact {
+      background-color: #333333;
+      padding: 3rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #contact h2 {
+      color: #a5d6a7;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    #contact a {
+      font-weight: 500;
+    }
+    .Instagram, .Twitter {
+      margin: 1rem 0;
+    }
 
-        #contact h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+    /* ------------------------- FOOTER ------------------------------- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      color: #888;
+      font-size: 0.95rem;
+    }
 
-        #contact p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    /* --------------------- MODAL STYLES ----------------------------- */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none; /* not clickable when hidden */
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+    }
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto; /* clickable when visible */
+    }
+    .modal-content {
+      background-color: #2c2c2c;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .modal-content h3 {
+      color: #80cbc4;
+      margin-bottom: 1rem;
+    }
+    .modal-content p {
+      color: #ccc;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #f5f5f5;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #80cbc4;
+    }
 
-        #contact a {
-            color: #80cbc4;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        #contact a:hover {
-            color: #a5d6a7;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #1a1a1a;
-            color: #888;
-            font-size: 14px;
-        }
-
-        footer a {
-            color: #80cbc4;
-            text-decoration: none;
-        }
-
-        /* Instagram Icon */
-        .instagram {
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .instagram a {
-            text-decoration: none;
-            color: #80cbc4;
-            font-size: 18px;
-        }
-
-        .instagram a:hover {
-            color: #a5d6a7;
-        }
-    </style>
+  </style>
 </head>
 <body>
 
-    <!-- Header Section with Name -->
-    <header>
-        <h1>Kartik Chandra</h1>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>Kartik Chandra</h1>
+  </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#books">Books</a>
-        <a href="#upcoming">Upcoming</a>
-        <a href="#buy">Where to Buy</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <!-- Mobile Nav Toggler -->
+  <input type="checkbox" id="nav-toggle" />
+  <label for="nav-toggle" class="nav-toggle-label">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
 
-    <div class="container">
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="#upcoming">Upcoming</a>
+      <a href="#buy">Where to Buy</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-        <!-- About Me Section -->
-        <section id="about" class="about">
-            <div class="about-text">
-                <h2>About Me</h2>
-                <p>Hello! I’m Kartik Chandra, an aspiring author, storyteller, and an enthusiastic student currently studying in Class 8 at Bhartiya Vidya Bhavan Mehta Vidyalaya. Ever since I can remember, writing has been more than just a hobby—it’s been my way of exploring the world and expressing my boundless imagination. I love weaving tales that blend mystery, adventure, and the thrill of the unknown, aiming to transport readers into worlds filled with wonder, suspense, and excitement.
+  <!-- Main Content Container -->
+  <div class="container">
 
-When I’m not writing, I’m an avid reader with a deep fascination for historical events, the mysteries of the universe, and the stories of unsung heroes. I find inspiration in everyday life—whether it’s a captivating moment in nature, an intriguing concept in science, or a quiet conversation with a friend. I also enjoy exploring new cultures, learning about different traditions, and imagining how they might connect to the stories I create.
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="reveal">
+      <div class="about-text">
+        <!-- Each element gets "fade-child" for staggered animation -->
+        <h2 class="fade-child">About Me</h2>
+        <p class="fade-child">
+          Hello! I’m Kartik Chandra, an aspiring author, storyteller, and an enthusiastic student currently studying in Class 8 at Bhartiya Vidya Bhavan Mehta Vidyalaya. Ever since I can remember, writing has been more than just a hobby—it’s been my way of exploring the world and expressing my boundless imagination. I love weaving tales that blend mystery, adventure, and the thrill of the unknown, aiming to transport readers into worlds filled with wonder, suspense, and excitement.
+        </p>
+        <p class="fade-child">
+          When I’m not writing, I’m an avid reader with a deep fascination for historical events, the mysteries of the universe, and the stories of unsung heroes. I find inspiration in everyday life—whether it’s a captivating moment in nature, an intriguing concept in science, or a quiet conversation with a friend. I also enjoy exploring new cultures, learning about different traditions, and imagining how they might connect to the stories I create.
+        </p>
+        <p class="fade-child">
+          Beyond my passion for storytelling, I’m a curious learner who loves delving into topics like astronomy, philosophy, and the paradoxes of time and space. I enjoy watching thought-provoking films, playing games that challenge the mind, and engaging in outdoor adventures that keep my imagination alive.
+        </p>
+        <p class="fade-child">
+          Through my work, I aspire to connect with readers of all ages, as I believe stories have the power to bridge generations. My writing is not just about crafting tales—it’s about building a shared experience, where readers feel a part of the journey and discover something new about themselves along the way.
+        </p>
+        <p class="fade-child">
+          Join me on this exciting adventure as I continue to explore the mysteries of the universe, uncover hidden truths, and create stories that will spark your imagination, challenge your perspective, and leave you guessing till the very end!
+        </p>
+      </div>
+      <div class="about-img fade-child">
+        <img src="https://i.postimg.cc/8cLZFHMk/photo-real.jpg" alt="Kartik Chandra Picture" />
+      </div>
+    </section>
 
-Beyond my passion for storytelling, I’m a curious learner who loves delving into topics like astronomy, philosophy, and the paradoxes of time and space. I enjoy watching thought-provoking films, playing games that challenge the mind, and engaging in outdoor adventures that keep my imagination alive.
+    <!-- BOOKS SECTION -->
+    <section id="books" class="reveal">
+      <h2 class="fade-child">My Books</h2>
+      <div class="book-list">
+        <!-- Book 1 -->
+        <div class="book-item fade-child" onclick="openModal('modal1')">
+          <h3>Nothing For Now</h3>
+          <p>Click to see details</p>
+        </div>
+        <!-- Book 2 -->
+        <div class="book-item fade-child" onclick="openModal('modal2')">
+          <h3>Nothing For Now</h3>
+          <p>Click to see details</p>
+        </div>
+      </div>
+    </section>
 
-Through my work, I aspire to connect with readers of all ages, as I believe stories have the power to bridge generations. My writing is not just about crafting tales—it’s about building a shared experience, where readers feel a part of the journey and discover something new about themselves along the way.
+    <!-- UPCOMING BOOKS SECTION -->
+    <section id="upcoming" class="reveal">
+      <h2 class="fade-child">Upcoming Books</h2>
+      <div class="upcoming-list">
+        <div class="upcoming-item fade-child">
+          <h3>Battle of Starlight: Whisker's Quest</h3>
+          <p>Coming Soon :)</p>
+        </div>
+        <div class="upcoming-item fade-child">
+          <h3>Title Soon To Be Released</h3>
+          <p>In Progress :)</p>
+        </div>
+      </div>
+    </section>
 
-Join me on this exciting adventure as I continue to explore the mysteries of the universe, uncover hidden truths, and create stories that will spark your imagination, challenge your perspective, and leave you guessing till the very end!</p>
-            </div>
-            <img src="https://i.postimg.cc/8cLZFHMk/photo-real.jpg" alt="Kartik Chandra Picture">
-        </section>
+    <!-- WHERE TO BUY SECTION -->
+    <section id="buy" class="reveal">
+      <h2 class="fade-child">Where to Buy</h2>
+      <div class="buy-links">
+        <div class="buy-item fade-child">
+          <h3>Amazon</h3>
+          <p><a href="#">Nothing For Now</a></p>
+        </div>
+        <div class="buy-item fade-child">
+          <h3>Flipkart</h3>
+          <p><a href="#">Nothing for now</a></p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Books Section -->
-        <section id="books">
-            <h2>My Books</h2>
-            <div class="book-list">
-                <div class="book-item">
-                    <h3>Nothing For Now</h3>
-                    <p>:)</p>
-                </div>
-                <div class="book-item">
-                    <h3>Nothing For Now</h3>
-                    <p>:)</p>
-                </div>
-            </div>
-        </section>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="reveal">
+      <h2 class="fade-child">Contact Me</h2>
+      <p class="fade-child">If you'd like to get in touch with me, feel free to email me at:</p>
+      <p class="fade-child">
+        <a href="mailto:kartikchandra032@gmail.com">kartikchandra032@gmail.com</a>
+      </p>
 
-        <!-- Upcoming Books Section -->
-        <section id="upcoming">
-            <h2>Upcoming Books</h2>
-            <div class="upcoming-list">
-                <div class="upcoming-item">
-                    <h3>Battle of Starlight: Whisker's Quest</h3>
-                    <p>Coming Soon :)</p>
-                </div>
-                <div class="upcoming-item">
-                    <h3>Title Soon To Be Released</h3>
-                    <p>In Progress :)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Where to Buy Section -->
-        <section id="buy">
-            <h2>Where to Buy</h2>
-            <div class="buy-links">
-                <div class="buy-item">
-                    <h3>Amazon</h3>
-                    <p><a href="#">Nothing For Now</a></p>
-                </div>
-                <div class="buy-item">
-                    <h3>Flipkart</h3>
-                    <p><a href="#">Nothing for now</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you'd like to get in touch with me, feel free to email me at:</p>
-    <p><a href="mailto:your-kartikchandra032@gmail.com">kartikchandra032@gmail.com</a></p>
-    <div class="Instagram">
+      <div class="Instagram fade-child">
         <p>Follow me on Instagram:</p>
         <a href="https://instagram.com/kartik__chandra" target="_blank">@kartik__chandra</a>
-    </div>
-    <div class="Twitter">
+      </div>
+
+      <div class="Twitter fade-child">
         <p>Follow me on X (Twitter):</p>
         <a href="https://twitter.com/KARTIKCHANDRA73" target="_blank">@KARTIKCHANDRA37</a>
-    </div>
-</section>
+      </div>
+    </section>
 
+  </div> <!-- container ends -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Kartik Chandra</p>
+  </footer>
+
+  <!-- MODALS: Book Details -->
+  <!-- Book 1 Modal -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
+      <!-- Replace "cover1.jpg" with your actual image URL -->
+      <img src="cover1.jpg" alt="Book Cover 1" />
+      <h3>Nothing For Now (Book 1)</h3>
+      <p>
+        Here you can add detailed info about the book. For example:
+        <br /><br />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod, felis eget vehicula gravida, sapien est cursus lacus, vel tempus ex urna at erat.
+      </p>
     </div>
-    
+  </div>
+
+  <!-- Book 2 Modal -->
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
+      <!-- Replace "cover2.jpg" with your actual image URL -->
+      <img src="cover2.jpg" alt="Book Cover 2" />
+      <h3>Nothing For Now (Book 2)</h3>
+      <p>
+        Detailed info about book 2:
+        <br /><br />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod, felis eget vehicula gravida, sapien est cursus lacus, vel tempus ex urna at erat.
+      </p>
+    </div>
+  </div>
+
+  <!-- JS: Intersection Observer for fade-in/out + Modal logic -->
+  <script>
+    // Intersection Observer to fade sections in/out
+    const options = {
+      threshold: 0.2 // 20% of section in view triggers intersection
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, options);
+
+    document.querySelectorAll('section.reveal').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Modal Functions
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add('show');
+    }
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('show');
+    }
+  </script>
 </body>
 </html>
