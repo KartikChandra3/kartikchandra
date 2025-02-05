@@ -52,15 +52,14 @@
       line-height: 1.8;     /* more line spacing */
     }
 
-    /* Increase spacing for sections */
     section {
-      padding: 4rem 0; /* More vertical space */
+      padding: 4rem 0; /* Increased vertical spacing */
     }
 
     /* ------------------------- HEADER SECTION --------------------------- */
     header {
       background-color: #222222;
-      padding: 3rem 1rem; /* bigger top/bottom padding */
+      padding: 3rem 1rem;
       text-align: center;
       position: relative;
       z-index: 1000;
@@ -158,11 +157,7 @@
         padding: 0;
         gap: 0;
       }
-      .nav-links a {
-        margin: 1rem 0;
-        font-size: 1.2rem;
-      }
-      /* When checkbox is checked, show the nav */
+      /* Show the nav when checkbox is checked */
       #nav-toggle:checked ~ nav .nav-links {
         height: 100vh;
         padding-top: 6rem;
@@ -188,19 +183,15 @@
 
     /* ---------------------- SECTION FADE IN/OUT ---------------------- */
     section.reveal {
-      /* Each section starts invisible and slightly below */
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease, transform 0.8s ease;
-      /* margin-bottom: 3rem; no longer needed with bigger top/bottom pad */
     }
     section.reveal.active {
-      /* When active, fade in and move up */
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* ---- STAGGERED CHILD ANIMATION (WITHIN SECTIONS) --------------- */
     .fade-child {
       opacity: 0;
       transform: translateY(20px);
@@ -231,7 +222,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Add more if needed */
 
     /* ----------------------- ABOUT SECTION --------------------------- */
     #about {
@@ -346,7 +336,8 @@
     /* --------------------- MODAL STYLES ----------------------------- */
     .modal {
       position: fixed;
-      top: 0; left: 0;
+      top: 0; 
+      left: 0;
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.7);
@@ -370,6 +361,10 @@
       width: 90%;
       text-align: center;
       position: relative;
+
+      /* Make content scrollable if it's too tall */
+      max-height: 80vh;
+      overflow-y: auto;
     }
     .modal-content img {
       max-width: 100%;
@@ -399,7 +394,6 @@
     .close-btn:hover {
       color: #80cbc4;
     }
-
   </style>
 </head>
 <body>
@@ -434,22 +428,37 @@
     <!-- ABOUT ME SECTION -->
     <section id="about" class="reveal">
       <div class="about-text">
-        <!-- Each element gets "fade-child" for staggered animation -->
         <h2 class="fade-child">About Me</h2>
         <p class="fade-child">
-          Hello! I’m Kartik Chandra, an aspiring author, storyteller, and an enthusiastic student currently studying in Class 8 at Bhartiya Vidya Bhavan Mehta Vidyalaya. Ever since I can remember, writing has been more than just a hobby—it’s been my way of exploring the world and expressing my boundless imagination. I love weaving tales that blend mystery, adventure, and the thrill of the unknown, aiming to transport readers into worlds filled with wonder, suspense, and excitement.
+          Hello! I’m Kartik Chandra, an aspiring author, storyteller, and an enthusiastic student
+          currently studying in Class 8 at Bhartiya Vidya Bhavan Mehta Vidyalaya. Ever since I can remember,
+          writing has been more than just a hobby—it’s been my way of exploring the world and expressing my
+          boundless imagination. I love weaving tales that blend mystery, adventure, and the thrill of the
+          unknown, aiming to transport readers into worlds filled with wonder, suspense, and excitement.
         </p>
         <p class="fade-child">
-          When I’m not writing, I’m an avid reader with a deep fascination for historical events, the mysteries of the universe, and the stories of unsung heroes. I find inspiration in everyday life—whether it’s a captivating moment in nature, an intriguing concept in science, or a quiet conversation with a friend. I also enjoy exploring new cultures, learning about different traditions, and imagining how they might connect to the stories I create.
+          When I’m not writing, I’m an avid reader with a deep fascination for historical events, the
+          mysteries of the universe, and the stories of unsung heroes. I find inspiration in everyday life—
+          whether it’s a captivating moment in nature, an intriguing concept in science, or a quiet
+          conversation with a friend. I also enjoy exploring new cultures, learning about different
+          traditions, and imagining how they might connect to the stories I create.
         </p>
         <p class="fade-child">
-          Beyond my passion for storytelling, I’m a curious learner who loves delving into topics like astronomy, philosophy, and the paradoxes of time and space. I enjoy watching thought-provoking films, playing games that challenge the mind, and engaging in outdoor adventures that keep my imagination alive.
+          Beyond my passion for storytelling, I’m a curious learner who loves delving into topics like
+          astronomy, philosophy, and the paradoxes of time and space. I enjoy watching thought-provoking
+          films, playing games that challenge the mind, and engaging in outdoor adventures that keep my
+          imagination alive.
         </p>
         <p class="fade-child">
-          Through my work, I aspire to connect with readers of all ages, as I believe stories have the power to bridge generations. My writing is not just about crafting tales—it’s about building a shared experience, where readers feel a part of the journey and discover something new about themselves along the way.
+          Through my work, I aspire to connect with readers of all ages, as I believe stories have the power
+          to bridge generations. My writing is not just about crafting tales—it’s about building a shared
+          experience, where readers feel a part of the journey and discover something new about themselves
+          along the way.
         </p>
         <p class="fade-child">
-          Join me on this exciting adventure as I continue to explore the mysteries of the universe, uncover hidden truths, and create stories that will spark your imagination, challenge your perspective, and leave you guessing till the very end!
+          Join me on this exciting adventure as I continue to explore the mysteries of the universe, uncover
+          hidden truths, and create stories that will spark your imagination, challenge your perspective, and
+          leave you guessing till the very end!
         </p>
       </div>
       <div class="about-img fade-child">
@@ -463,13 +472,14 @@
       <div class="book-list">
         <!-- Book 1 -->
         <div class="book-item fade-child" onclick="openModal('modal1')">
-          <h3>Nothing For Now</h3>
-          <p>Click to see details</p>
+          <h3>Battle of The Starlight: Whisker's Quest</h3>
+          <p>Click for details</p>
         </div>
-        <!-- Book 2 -->
+
+        <!-- Optional Additional Book (Placeholder) -->
         <div class="book-item fade-child" onclick="openModal('modal2')">
-          <h3>Nothing For Now</h3>
-          <p>Click to see details</p>
+          <h3>Another Title</h3>
+          <p>Coming soon...</p>
         </div>
       </div>
     </section>
@@ -478,10 +488,7 @@
     <section id="upcoming" class="reveal">
       <h2 class="fade-child">Upcoming Books</h2>
       <div class="upcoming-list">
-        <div class="upcoming-item fade-child">
-          <h3>Battle of Starlight: Whisker's Quest</h3>
-          <p>Coming Soon :)</p>
-        </div>
+        <!-- "Battle of The Starlight" removed since it's published. -->
         <div class="upcoming-item fade-child">
           <h3>Title Soon To Be Released</h3>
           <p>In Progress :)</p>
@@ -495,11 +502,18 @@
       <div class="buy-links">
         <div class="buy-item fade-child">
           <h3>Amazon</h3>
-          <p><a href="#">Nothing For Now</a></p>
+          <p>
+            <a 
+              href="https://www.amazon.in/dp/8119524381?ref=cm_sw_r_ffobk_cso_cp_apan_dp_3265YSS4WN7ERH9XJ0WJ&social_share=cm_sw_r_ffobk_cso_cp_apan_dp_3265YSS4WN7ERH9XJ0WJ&starsLeft=1&skipTwisterOG=1&bestFormat=true"
+              target="_blank"
+            >
+              Battle of The Starlight: Whisker's Quest
+            </a>
+          </p>
         </div>
         <div class="buy-item fade-child">
           <h3>Flipkart</h3>
-          <p><a href="#">Nothing for now</a></p>
+          <p><a href="#">Not available yet</a></p>
         </div>
       </div>
     </section>
@@ -531,39 +545,46 @@
   </footer>
 
   <!-- MODALS: Book Details -->
-  <!-- Book 1 Modal -->
+  <!-- MODAL 1 -->
   <div class="modal" id="modal1">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal('modal1')">&times;</button>
-      <!-- Replace "cover1.jpg" with your actual image URL -->
-      <img src="cover1.jpg" alt="Book Cover 1" />
-      <h3>Nothing For Now (Book 1)</h3>
+      <img 
+        src="https://i.postimg.cc/rpj00Pvn/final-book-cover.jpg" 
+        alt="Battle of The Starlight: Whisker's Quest Cover" 
+      />
+      <h3>Battle of The Starlight: Whisker's Quest</h3>
       <p>
-      upcoming
-        <br /><br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod, felis eget vehicula gravida, sapien est cursus lacus, vel tempus ex urna at erat.
+        In this enchanting fantasy story, a young fox named Whisker lives in a village that was once alive 
+        with laughter and community spirit but is now shrouded in darkness under the tyranny of the ruthless 
+        sorcerer-king, Malgrim. Fear grips the villagers as silence replaces the joy they once knew.
+      </p>
+      <p>
+        Determined to save his home, Whisker sets out for the Old Fortress, searching for a way 
+        to break Malgrim's dark spell. Along the way, he faces trials that test his courage and 
+        determination, inspiring hope for the return of freedom and light to his village.
+      </p>
+      <p>
+        Now available on Amazon!
       </p>
     </div>
   </div>
 
-  <!-- Book 2 Modal -->
+  <!-- MODAL 2 (Placeholder) -->
   <div class="modal" id="modal2">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal('modal2')">&times;</button>
-      <!-- Replace "cover2.jpg" with your actual image URL -->
-      <img src="cover2.jpg" alt="Book Cover 2" />
-      <h3>Nothing For Now (Book 2)</h3>
+      <img src="cover2.jpg" alt="Future Book Cover" />
+      <h3>Another Title</h3>
       <p>
-        Upcoming
-        <br /><br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod, felis eget vehicula gravida, sapien est cursus lacus, vel tempus ex urna at erat.
+        Details coming soon...
       </p>
     </div>
   </div>
 
   <!-- JS: Intersection Observer for fade-in/out + Modal logic -->
   <script>
-    // Intersection Observer to fade sections in/out
+    // 1) Intersection Observer for fade sections in/out
     const options = {
       threshold: 0.2 // 20% of section in view triggers intersection
     };
@@ -581,14 +602,24 @@
       observer.observe(section);
     });
 
-    // Modal Functions
+    // 2) Modal Functions with "click-away" to close
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.classList.add('show');
+
+      // Close if user clicks on the dark overlay
+      modal.addEventListener('click', function onClickOutside(e) {
+        if (e.target === modal) {
+          closeModal(modalId);
+          modal.removeEventListener('click', onClickOutside);
+        }
+      });
     }
+
     function closeModal(modalId) {
       const modal = document.getElementById(modalId);
       modal.classList.remove('show');
+      // The click-away event listener is removed above.
     }
   </script>
 </body>
